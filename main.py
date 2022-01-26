@@ -13,17 +13,25 @@ time.sleep(2)
 answer = int(input('what is your guess?'))
 
 # game logic
-
-while n != answer :
-  # n is less than guess
+count = 1 
+while n != answer and count < 5 :
+  # n is less than guess and if count is under 5 
   if answer < n : 
     print ('try again, too small ')
+    print ('You have {} attempts left'.format((5-count)))
     answer = int(input('next guess: '))
+    count += 1
   # n is less than guess
   elif answer > n:  
     print ('try again, too large ')
+    print ('You have {} attempts left'.format((5-count)))
     answer = int(input('next guess: '))
+    count += 1
   # else - stop if equal
   else :
-    print('you won!') 
     break 
+
+if answer == n:   
+  print('you won!') 
+else: 
+    print ('bad luck!')
